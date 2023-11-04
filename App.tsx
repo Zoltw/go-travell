@@ -4,7 +4,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './screens/home/home';
 import DetailsScreen from './screens/details/details';
 
-
 export type RootStackParamList = {
   Home: undefined;
   Details: undefined;
