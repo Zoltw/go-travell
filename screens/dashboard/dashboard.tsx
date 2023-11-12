@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Text, View } from 'react-native';
 import { styles } from './style';
 
-const DetailsScreen: React.FC = () => {
+const Dashboard: React.FC = () => {
   return (
     <View style={styles.container}>
       <Text>Details Screen</Text>
@@ -10,4 +10,4 @@ const DetailsScreen: React.FC = () => {
   );
 };
 
-export default DetailsScreen;
+export default Dashboard;
