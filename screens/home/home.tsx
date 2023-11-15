@@ -1,6 +1,5 @@
-/* eslint-disable quotes */
-import React, { useEffect, useRef } from 'react';
-import { Animated, Image, ScrollView, Text, View } from 'react-native';
+import React, { useCallback, useEffect, useRef } from 'react';
+import { Image, ScrollView, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../App';
@@ -16,22 +15,20 @@ type Props = {
 
 const HomeScreen: React.FC<Props> = ({ navigation }) => {
   const { t } = useTranslation();
-  const animatedValue = new Animated.Value(0);
   const isMounted = useRef(true);
 
   useEffect(() => {
     isMounted.current = true;
-
     return () => {
       isMounted.current = false;
     };
   }, []);
 
-  const updateAnimation = () => {
+  const navigateToDashboard = useCallback(() => {
     if (isMounted.current) {
-      animatedValue.setValue(1);
+      navigation.navigate('Dashboard');
     }
-  };
+  }, [navigation]);
 
   return (
     <View style={styles.container}>
@@ -51,7 +48,7 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => {
       </ScrollView>
       <View style={styles.container2}>
         <Text style={styles.text}>{t('welcome')}</Text>
-        <Button text={t("let's get started")} onPressFunction={() => navigation.navigate('Dashboard')}/>
+        <Button text={t('let\'s get started')} onPressFunction={() => navigateToDashboard()}/>
       </View>
     </View>
   );
