@@ -7,7 +7,7 @@ import pl from './locale/pl.json';
 i18n
   .use(initReactI18next)
   .init({
-    pluralSeparator: "_",
+    pluralSeparator: '_',
     compatibilityJSON: 'v3',
     resources: {
       en: { translation: en },

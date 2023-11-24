@@ -35,6 +35,6 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 
-gotrawell-server/.gradle
-gotrawell-server/.idea
-gotrawell-server/build
+gotrawell-server/src/utils/database.sqlite
+
+.env
