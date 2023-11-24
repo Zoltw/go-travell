@@ -3,6 +3,7 @@ import * as userService from "../services/userService";
 import jwt from "jsonwebtoken";
 
 export const createUser = async (req: Request, res: Response) => {
+  console.log(req.body)
     const { email, password, passwordConfirmation } = req.body;
     if (password !== passwordConfirmation) {
       return res.status(400).json({ message: "Passwords do not match" });
