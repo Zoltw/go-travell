@@ -26,7 +26,7 @@ const Item: React.FC<ItemProps> = ({ title }) => (
   </View>
 );
 
-const VirtualizedListExample = (): JSX.Element => {
+const VirtualizedListCont = (): JSX.Element => {
   return (
     <VirtualizedList
       data={DATA}
@@ -39,4 +39,4 @@ const VirtualizedListExample = (): JSX.Element => {
   );
 };
 
-export default VirtualizedListExample;
+export default VirtualizedListCont;
