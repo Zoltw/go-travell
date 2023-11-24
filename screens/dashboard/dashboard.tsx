@@ -4,6 +4,7 @@ import { styles } from './style';
 import { toggleFetchTask } from '../../utils/backgroundTask';
 import * as TaskManager from 'expo-task-manager';
 import { Button } from '../../components/Button/Button';
+import VirtualizedListExample from '../../components/List/List';
 
 const BACKGROUND_FETCH_TASK = 'background-fetch';
 
@@ -26,8 +27,7 @@ const Dashboard: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <Text>Details Screen</Text>
-      <Button text="Toggle Fetch Task" onPressFunction={handleToggleFetchTask} />
+      <VirtualizedListExample/>
     </View>
   );
 };
