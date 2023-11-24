@@ -1,5 +1,5 @@
-import app from "./app";
-import sequalize from "./utils/database";
+import app from './app';
+import sequalize from './utils/database';
 
 const PORT = 8080;
 
@@ -11,7 +11,7 @@ const startServer = async () => {
         console.log(`Server is running on port ${PORT}`);
       });
     } catch (error) {
-      console.error("Error starting server:", error);
+      console.error('Error starting server:', error);
     }
   });
 };

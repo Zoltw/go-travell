@@ -1,30 +1,35 @@
 import { DataTypes, Model } from 'sequelize';
 import sequelize from '../utils/database';
 
-class User extends Model {
+class Place extends Model {
   public id!: number;
-  public email!: string;
-  public password!: string;
+  public name!: string;
+  public country!: string;
+  public photo!: string;
 }
 
-User.init({
+Place.init({
   id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
     primaryKey: true,
   },
-  email: {
+  name: {
     type: DataTypes.STRING,
     allowNull: false,
     unique: true,
   },
-  password: {
+  country: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  photo: {
     type: DataTypes.STRING,
     allowNull: false,
   },
 }, {
   sequelize,
-  modelName: 'User',
+  modelName: 'Place',
 });
 
-export default User;
+export default Place;
