@@ -4,14 +4,17 @@ import React from 'react';
 
 const BACKGROUND_FETCH_TASK = 'background-fetch';
 
-TaskManager.defineTask(BACKGROUND_FETCH_TASK, async () => {
+TaskManager.defineTask(BACKGROUND_FETCH_TASK, ({ data, error }) => {
   console.log('ddd');
+  if (error) {
+    console.log('dupa');
+  }
   const now = Date.now();
 
   console.log(`Got background fetch call at date: ${new Date(now).toISOString()}`);
 
-  const response = await fetch(`${process.env.API_URL}/v1/place/all`);
-  const data = await response.json();
+  // const response = await fetch(`${process.env.API_URL}/v1/place/all`);
+  // data = await response.json();
 
   console.log(`Received data from backend: ${JSON.stringify(data)}`);
 
@@ -20,15 +23,20 @@ TaskManager.defineTask(BACKGROUND_FETCH_TASK, async () => {
 
 async function registerBackgroundFetchAsync() {
   console.log('dupa');
-  return BackgroundFetch.registerTaskAsync(BACKGROUND_FETCH_TASK, {
-    stopOnTerminate: false,
+  BackgroundJob;
+  const dupa = BackgroundFetch.registerTaskAsync(BACKGROUND_FETCH_TASK, {
+    minimumInterval: 1,
+    stopOnTerminate: true,
     startOnBoot: true,
   });
+  BackgroundJob;
+  return dupa;
 }
 
 async function unregisterBackgroundFetchAsync() {
   console.log('dupppp');
-  return BackgroundFetch.unregisterTaskAsync(BACKGROUND_FETCH_TASK);
+  const dupa = BackgroundFetch.unregisterTaskAsync(BACKGROUND_FETCH_TASK);
+  return dupa;
 }
 
 export const toggleFetchTask = async (isRegistered: boolean) => {
@@ -50,4 +58,5 @@ export default function BackgroundJob() {
     const isRegistered = await TaskManager.isTaskRegisteredAsync(BACKGROUND_FETCH_TASK);
     setIsRegistered(isRegistered);
   };
+  console.log(checkStatusAsync);
 };

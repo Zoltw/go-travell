@@ -1,10 +1,10 @@
 import React from 'react';
-import { GestureResponderEvent, Text, TouchableHighlight, View } from 'react-native';
+import { Text, TouchableHighlight, View } from 'react-native';
 import { styles } from './style';
 
 interface props {
-  text: string,
-  onPressFunction: () => void
+  text?: string,
+  onPressFunction: () => void | Promise<void>
 }
 
 export const Button: React.FC<props> = (props) => {

@@ -4,6 +4,7 @@ import { styles } from './styles';
 import * as TaskManager from 'expo-task-manager';
 import { toggleFetchTask } from '../../../utils/backgroundTask';
 import VirtualizedListCont from '../../../components/List/List';
+import { Button } from '../../../components/Button/Button';
 
 const BACKGROUND_FETCH_TASK = 'background-fetch';
 
@@ -20,12 +21,13 @@ const DashboardBigger: React.FC = () => {
   }, []);
 
   const handleToggleFetchTask = async () => {
-    await toggleFetchTask(isRegistered);
+    toggleFetchTask(isRegistered);
     setIsRegistered(!isRegistered);
   };
 
   return (
     <View style={styles.container}>
+      <Button text={'dupajan'} onPressFunction={handleToggleFetchTask}/>
       <VirtualizedListCont/>
     </View>
   );
