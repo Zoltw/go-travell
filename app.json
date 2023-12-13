@@ -17,14 +17,18 @@
     "ios": {
       "supportsTablet": true,
       "infoPlist": {
-        "UIBackgroundModes": ["fetch"]
-      }
+        "UIBackgroundModes": [
+          "fetch"
+        ]
+      },
+      "bundleIdentifier": "com.anonymous.gotrawell"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.anonymous.gotrawell"
     },
     "web": {
       "favicon": "./assets/favicon.png"

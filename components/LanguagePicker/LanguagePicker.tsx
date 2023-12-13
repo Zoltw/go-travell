@@ -2,11 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import i18n from '../../localization/i18n';
 import { styles } from './styles';
-
-const languages = [
-  { code: 'en', name: 'English' },
-  { code: 'pl', name: 'Polski' },
-];
+import { LanguagesAll } from '../../localization/languages';
 
 export const LanguagePicker: React.FC = () => {
   const [selectedLanguage, setSelectedLanguage] = useState(i18n.language);
@@ -18,14 +14,14 @@ export const LanguagePicker: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      {languages.map((language, index) => (
+      {LanguagesAll.map((language, index) => (
         <TouchableOpacity
           key={index}
           style={styles.languageItem}
-          onPress={() => handleLanguageChange(language.code)}
+          onPress={() => handleLanguageChange(language.ISO2)}
         >
-          <Text style={selectedLanguage === language.code ? styles.selectedText : styles.text}>
-            {language.name}
+          <Text style={selectedLanguage === language.ISO2 ? styles.selectedText : styles.text}>
+            {language.fullName}
           </Text>
         </TouchableOpacity>
       ))}

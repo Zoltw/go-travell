@@ -4,17 +4,13 @@ import React from 'react';
 
 const BACKGROUND_FETCH_TASK = 'background-fetch';
 
-TaskManager.defineTask(BACKGROUND_FETCH_TASK, ({ data, error }) => {
-  console.log('ddd');
-  if (error) {
-    console.log('dupa');
-  }
+TaskManager.defineTask(BACKGROUND_FETCH_TASK, async ({ data }) => {
   const now = Date.now();
 
   console.log(`Got background fetch call at date: ${new Date(now).toISOString()}`);
 
-  // const response = await fetch(`${process.env.API_URL}/v1/place/all`);
-  // data = await response.json();
+  const response = await fetch(`${process.env.API_URL}/v1/place/all`);
+  data = await response.json();
 
   console.log(`Received data from backend: ${JSON.stringify(data)}`);
 
@@ -22,24 +18,18 @@ TaskManager.defineTask(BACKGROUND_FETCH_TASK, ({ data, error }) => {
 });
 
 async function registerBackgroundFetchAsync() {
-  console.log('dupa');
-  BackgroundJob;
-  const dupa = BackgroundFetch.registerTaskAsync(BACKGROUND_FETCH_TASK, {
+  return BackgroundFetch.registerTaskAsync(BACKGROUND_FETCH_TASK, {
     minimumInterval: 1,
     stopOnTerminate: true,
     startOnBoot: true,
   });
-  BackgroundJob;
-  return dupa;
 }
 
 async function unregisterBackgroundFetchAsync() {
-  console.log('dupppp');
-  const dupa = BackgroundFetch.unregisterTaskAsync(BACKGROUND_FETCH_TASK);
-  return dupa;
+  return BackgroundFetch.unregisterTaskAsync(BACKGROUND_FETCH_TASK);
 }
 
-export const toggleFetchTask = async (isRegistered: boolean) => {
+export const toggleFetchTask = async (isRegistered: boolean): Promise<void> => {
   if (isRegistered) {
     await unregisterBackgroundFetchAsync();
   } else {
@@ -47,7 +37,7 @@ export const toggleFetchTask = async (isRegistered: boolean) => {
   }
 };
 
-export default function BackgroundJob() {
+export default function BackgroundJob(): void {
   const [isRegistered, setIsRegistered] = React.useState(false);
 
   React.useEffect(() => {
@@ -58,5 +48,4 @@ export default function BackgroundJob() {
     const isRegistered = await TaskManager.isTaskRegisteredAsync(BACKGROUND_FETCH_TASK);
     setIsRegistered(isRegistered);
   };
-  console.log(checkStatusAsync);
 };
