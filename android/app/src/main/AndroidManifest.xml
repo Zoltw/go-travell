@@ -30,6 +30,14 @@
         <data android:scheme="com.anonymous.gotrawell"/>
       </intent-filter>
     </activity>
+    <receiver
+        android:name="com.yourapp.CustomBroadcastReceiver"
+        android:enabled="true"
+        android:exported="true">
+        <intent-filter>
+          <action android:name="com.555broadcaster.incoming" />
+        </intent-filter>
+      </receiver>
     <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" android:exported="false"/>
   </application>
 </manifest>

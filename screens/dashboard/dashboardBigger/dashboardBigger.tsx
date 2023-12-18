@@ -27,7 +27,7 @@ const DashboardBigger: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <Button text={'dupajan'} onPressFunction={handleToggleFetchTask}/>
+      <Button text={'Biglist'} onPressFunction={handleToggleFetchTask}/>
       <VirtualizedListCont/>
     </View>
   );

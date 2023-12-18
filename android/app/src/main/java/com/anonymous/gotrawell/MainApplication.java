@@ -15,10 +15,11 @@ import com.facebook.soloader.SoLoader;
 
 import expo.modules.ApplicationLifecycleDispatcher;
 import expo.modules.ReactNativeHostWrapper;
+import com.example.gotrawell.CustomReactNativeApplication;
 
 import java.util.List;
 
-public class MainApplication extends Application implements ReactApplication {
+public class MainApplication extends Application implements ReactApplication, CustomReactNativeApplication {
 
   private final ReactNativeHost mReactNativeHost =
     new ReactNativeHostWrapper(this, new DefaultReactNativeHost(this) {
@@ -56,6 +57,11 @@ public class MainApplication extends Application implements ReactApplication {
   public ReactNativeHost getReactNativeHost() {
     return mReactNativeHost;
   }
+
+  @Override
+  public ReactContext getReactContext() {
+    return this.getReactNativeHost().getReactInstanceManager().getCurrentReactContext();
+  };
 
   @Override
   public void onCreate() {

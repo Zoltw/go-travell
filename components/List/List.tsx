@@ -7,12 +7,12 @@ interface ItemProps {
   title: string;
 }
 
-const DATA = new Array(1000).fill(null).map((_, index) => `Dupa ${index + 1}`);
+const DATA = new Array(1000).fill(null).map((_, index) => `List ${index + 1}`);
 
 const getItem = (data: any, index: number) => {
   return {
     id: Math.random().toString(12).substring(0),
-    title: `Dupa ${index + 1}`,
+    title: `list ${index + 1}`,
   };
 };
 

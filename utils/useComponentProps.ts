@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 import React from 'react';
 import { English, Language } from '../localization/languages';
+import { DeviceEventEmitter } from 'react-native';
 
 
 interface WelcomeImageURLs {
@@ -32,5 +33,11 @@ export const defaultComponentProps: ComponentProps = {
 const DataContext = React.createContext<ComponentProps>(defaultComponentProps);
 
 export default function useComponentProps(): ComponentProps {
+  React.useEffect(() => {
+    DeviceEventEmitter.addListener('broadcaster-data-received', (data) => {
+      console.log('Your data is here: ', data);
+    });
+  }, []);
+
   return React.useContext(DataContext);
 }
